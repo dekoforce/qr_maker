@@ -19,6 +19,8 @@ Module Module1
             If file.ToLower.EndsWith(".bmp") Then
                 'Save as Bitmap
                 bmp.Save(file)
+            ElseIf file.ToLower.EndsWith(".gif") Then
+                bmp.Save(file, System.Drawing.Imaging.ImageFormat.Gif)
             ElseIf file.ToLower.EndsWith(".txt") Then
                 'Save as Textfile
                 Dim qrtxt As String = ""
@@ -68,7 +70,7 @@ Module Module1
             End
         End If
 
-        If Not (args(2).ToLower.EndsWith(".bmp") Or args(2).ToLower.EndsWith(".txt")) Then
+        If Not (args(2).ToLower.EndsWith(".bmp") Or args(2).ToLower.EndsWith(".txt") Or args(2).ToLower.EndsWith(".gif")) Then
             Console.WriteLine(args(2).ToLower)
             ShowHelp()
             End
@@ -89,7 +91,7 @@ Module Module1
         Console.WriteLine("Commandline-Tool for generating QR-Codes with ZXing.NET.DLL (https: //zxingnet.codeplex.com/)" & vbCrLf &
                           "Two Parameters needed:" & vbCrLf &
                           "1. Value to Encode" & vbCrLf &
-                          "2. Path&File to save (BMP or TXT)" & vbCrLf &
+                          "2. Path&File to save (BMP,GIF or TXT)" & vbCrLf &
                           "3. -symbol (Optional, only needed for TXT-File)" & vbCrLf & vbCrLf &
                           "If third Parameter is not given, the result Textfile will contain Non-Block-Symbols:" & vbCrLf &
                           "█ = X, ▀ = O, ▄ = U, ' ' = ' ', E = CrLf" & vbCrLf & vbCrLf &
